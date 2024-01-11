@@ -25,7 +25,11 @@ const App = () => {
 
   const getAnswer =  async () => {
     try {
-      const res = await fetch(`http://numbersapi.com/${inp}`);
+      const res = await fetch(`http://numbersapi.com/${inp}/`, {
+        // headers: {
+        //   referrerPolicy: "unsafe_url"
+        // } 
+      });
       const text = await res.text();
       setText(text)
       setLoad("");
