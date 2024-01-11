@@ -25,24 +25,30 @@ const App = () => {
   }
 
   const getAnswer = async () => {
-    if( (inp !== null || inp === "")  && /[^a-zA-Z]/.test(inp)) {
-      const res = await axios.request(`http://numbersapi.com/${inp}`);
-      setText(res.data);
-      setLoad("");
-    } else {
-      alert("Please input the correct value and refresh");
-    }
+      try {
+        const res = await axios.request(`http://numbersapi.com/${inp}`);
+        setText(res.data);
+        setLoad("");
+      } catch (err) {
+        setText(errorMsg());
+        setLoad("");
+        console.log(err);
+      }
   }
 
   const handleClick = (e) => {
     e.preventDefault();
-    
-    getAnswer()
-    .catch(e => console.log(e))
-    .catch(setText(errorMsg()));
-
-    setText("");
-    setLoad("Loading...")
+    if(inp === null || inp === "") {
+      console.log("is null");
+      setLoad("");
+      setText(default_text)
+      alert("Please input the correct value and refresh");
+    } else {
+      setText("");
+      setLoad("Loading...");
+      getAnswer();
+      console.log("not null");
+    }
   }
 
   return (
@@ -61,7 +67,6 @@ const App = () => {
       </div>
     </div>
   );
-
 }
 
 export default App;
