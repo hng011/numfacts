@@ -1,5 +1,4 @@
 import { React,useState } from 'react'
-import axios from 'axios';
 import './assets/css/App.css'
 import Text from './components/Text'
 import Header from './components/Header'
@@ -24,30 +23,42 @@ const App = () => {
     );
   }
 
-  const getAnswer = async () => {
-      try {
-        const res = await axios.request(`http://numbersapi.com/${inp}`);
-        setText(res.data);
-        setLoad("");
-      } catch (err) {
-        setText(errorMsg());
-        setLoad("");
-        console.log(err);
-      }
-  }
+  const getAnswer =  async () => {
+    try {
+      const res = await fetch(`http://numbersapi.com/${inp}`);
+      const text = await res.text();
+      setText(text)
+      setLoad("");
+    } catch (error) {
+      console.log(error);
+      setText(errorMsg())
+      setLoad(""); 
+    }
+  } 
+
+  // const getAnswer = async () => {
+  //     try {
+  //       const res = await axios.request(`http://numbersapi.com/${inp}`);
+  //       setText(res.data);
+  //       setLoad("");
+  //     } catch (err) {
+  //       setText(errorMsg());
+  //       setLoad("");
+  //       console.log(err);
+  //     }
+  // }
 
   const handleClick = (e) => {
     e.preventDefault();
     if(inp === null || inp === "") {
-      console.log("is null");
-      setLoad("");
       setText(default_text)
-      alert("Please input the correct value and refresh");
+      setLoad("");
+      alert("Please input the correct value...");
     } else {
       setText("");
       setLoad("Loading...");
       getAnswer();
-      console.log("not null");
+      document.getElementById('inputNum').value="";
     }
   }
 
@@ -62,7 +73,7 @@ const App = () => {
           <div id='loading'>
             {load}
           </div>
-          <Text text={text} />
+          <Text text={text}/>
         </div>  
       </div>
     </div>
