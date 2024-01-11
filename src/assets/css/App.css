@@ -6,3 +6,23 @@ body {
     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */        
 }
+
+.desc-animation {
+    color: rgb(0, 188, 25);
+    animation: scale_text 1s infinite;
+}
+
+@keyframes scale_text {
+    0% {
+        opacity: 0.2;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 1.0;
+        transform: scale(1.1);
+      }
+      100% {
+        opacity: 0.2;
+        transform: scale(1);
+      }
+}
