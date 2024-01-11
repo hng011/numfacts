@@ -1,7 +1,7 @@
 {
   "name": "w12_react",
   "version": "0.1.0",
-  "homepage": "http://hng011.github.io/numfacts",
+  "homepage": "http://numfacts.hng011.com",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
