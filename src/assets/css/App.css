@@ -10,6 +10,23 @@ body {
 .desc-animation {
     color: rgb(0, 188, 25);
     animation: scale_text 1.5s infinite;
+    font-size: 9px;
+  }
+
+.btn-input, .input-num {
+  width: 100%;
+}
+  
+@media only screen and (min-width: 640px){
+  .desc-animation {
+    font-size: 15px;
+  }
+  .btn-input, .input-num {
+    width: auto;
+  }
+  .btn-input {
+    margin-left: 5px;
+  }
 }
 
 @keyframes scale_text {

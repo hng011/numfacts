@@ -71,7 +71,7 @@ const App = () => {
       <div className='flex justify-center flex-col text-center w-[70%]'>
         <div className='mt-[30vh] mb-[2%]'>
           <Header />
-          <main className='mt-3'>
+          <main className='my-3'>
             <Input funcInp={getInput} funcHandleClick={handleClick} />
           </main>
           <div id='loading'>
